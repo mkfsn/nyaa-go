@@ -10,7 +10,7 @@ type Category int
 
 const (
 	CategoryAll Category = 0x000
-	// Categories between categoryNyaaBegin and categoryNyaaEnd are for ProviderNyaa
+	// Categories between categoryNyaaBegin and categoryNyaaEnd are for ProviderNyaa.
 	categoryNyaaBegin                          = 0x100
 	CategoryNyaaAnime                          = 0x110
 	CategoryNyaaAnimeMusicVideo                = 0x111
@@ -33,7 +33,7 @@ const (
 	CategoryNyaaSoftwareApplications           = 0x161
 	CategoryNyaaSoftwareGames                  = 0x162
 	categoryNyaaEnd                            = 0x1FF
-	// Categories between categorySukebeiBegin and categorySukebeiEnd are for ProviderSukebei
+	// Categories between categorySukebeiBegin and categorySukebeiEnd are for ProviderSukebei.
 	categorySukebeiBegin                         = 0x200
 	CategorySukebeiArt                           = 0x210
 	CategorySukebeiArtAnime                      = 0x211
@@ -55,17 +55,19 @@ func (c Category) Value(p Provider) string {
 	switch p {
 	case ProviderNyaa:
 		base := c - categoryNyaaBegin
+
 		return fmt.Sprintf("%d_%d", base/16, base%16)
 
 	case ProviderSukebei:
 		base := c - categorySukebeiBegin
+
 		return fmt.Sprintf("%d_%d", base/16, base%16)
 	}
 
 	return ""
 }
 
-func (c Category) String() string {
+func (c Category) String() string { //nolint:funlen,gocyclo,cyclop
 	switch c {
 	case CategoryAll:
 		return "All"

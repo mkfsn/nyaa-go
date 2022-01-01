@@ -6,12 +6,12 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
-// Client represents a Nyaa client
+// Client represents a Nyaa client.
 type Client struct {
 	httpClient *http.Client
 }
 
-// NewClient returns a Nyaa client
+// NewClient returns a Nyaa client.
 func NewClient() *Client {
 	return &Client{
 		httpClient: &http.Client{},
@@ -24,7 +24,7 @@ func (c *Client) Search(opts SearchOptions) ([]*Torrent, error) {
 		return nil, err
 	}
 
-	resp, err := c.httpClient.Get(opts.buildURL().String())
+	resp, err := c.httpClient.Get(opts.buildURL().String()) //nolint:noctx
 	if err != nil {
 		return nil, err
 	}

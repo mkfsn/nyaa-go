@@ -17,7 +17,7 @@ type Torrent struct {
 	Date               time.Time `json:"date"`
 	Seeders            int64     `json:"seeders"`
 	Leechers           int64     `json:"leechers"`
-	CompletedDownloads int64     `json:"complete_downloads"`
+	CompletedDownloads int64     `json:"completeDownloads"`
 
 	detailLink string
 }

@@ -16,6 +16,11 @@ linters:
   - gofumpt
   - maligned
   - interfacer
+  - exhaustive
+  - gomnd
+  - goerr113
+  - exhaustivestruct
+  - wrapcheck
 
 linters-settings:
   govet:

@@ -5,9 +5,10 @@ import (
 	"net/url"
 )
 
-// Provider represents the supported sites of Nyaa. Currently supported:
-// - ProviderNyaa: http://nyaa.si
-// - ProviderSukebei: http://sukebei.nyaa.si (NSFW)
+// Provider represents the supported sites of Nyaa.
+// Currently supported:
+//  - ProviderNyaa: http://nyaa.si
+//  - ProviderSukebei: http://sukebei.nyaa.si (NSFW)
 type Provider int
 
 const (
