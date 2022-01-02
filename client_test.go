@@ -23,6 +23,20 @@ func ExampleClient_Search() {
 	}
 
 	for _, torrent := range torrents {
-		fmt.Printf("%+v\n", torrent)
+		fmt.Printf("%s\n", torrent.Name)
+		fmt.Printf(" - %s\n", torrent.Category)
+		fmt.Printf(" - %s\n", torrent.Size)
+		fmt.Printf(" - %s\n", torrent.Link)
+		fmt.Printf(" - %s\n", torrent.Date.UTC())
+		// fmt.Printf(" - %d\n", torrent.Seeders)
+		// fmt.Printf(" - %d\n", torrent.Leechers)
+		// fmt.Printf(" - %d\n", torrent.CompletedDownloads)
 	}
+
+	// Output:
+	// [水樹奈々] Nana Mizuki - NANA CLIP 8 BDMV
+	//  - Live Action - Non-English-translated
+	//  - 35.9 GiB
+	//  - https://nyaa.si/download/1421189.torrent
+	//  - 2021-08-15 00:06:05 +0000 UTC
 }
