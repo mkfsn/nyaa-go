@@ -118,6 +118,10 @@ func (c Category) String() string {
 }
 
 func (c Category) validate(p Provider) error {
+	if err := p.validate(); err != nil {
+		return err
+	}
+
 	switch p {
 	case ProviderNyaa:
 		if c == CategoryAll {
@@ -134,5 +138,5 @@ func (c Category) validate(p Provider) error {
 		}
 	}
 
-	return ErrUnknownProvider
+	return nil
 }

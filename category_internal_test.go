@@ -16,9 +16,11 @@ func TestCategory_validate(t *testing.T) {
 		{ProviderNyaa, CategoryAll, nil},
 		{ProviderNyaa, categoryNyaaBegin - 1, fmt.Errorf("invalid Category value for provider: ProviderNyaa")},
 		{ProviderNyaa, categoryNyaaEnd + 1, fmt.Errorf("invalid Category value for provider: ProviderNyaa")},
+		{ProviderNyaa, CategoryNyaaAnime, nil},
 		{ProviderSukebei, CategoryAll, nil},
 		{ProviderSukebei, categorySukebeiBegin - 1, fmt.Errorf("invalid Category value for provider: ProviderSukebei")},
 		{ProviderSukebei, categorySukebeiEnd + 1, fmt.Errorf("invalid Category value for provider: ProviderSukebei")},
+		{ProviderSukebei, CategorySukebeiArt, nil},
 		{providerEnd, CategoryAll, ErrUnknownProvider},
 	}
 	for _, tt := range tests {

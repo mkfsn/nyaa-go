@@ -40,7 +40,7 @@ func (f FilterBy) Value() string {
 }
 
 func (f FilterBy) validate() error {
-	if f >= filterByEnd {
+	if f < 0 || f >= filterByEnd {
 		return ErrUnknownFilterBy
 	}
 
