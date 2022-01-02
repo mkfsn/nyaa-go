@@ -40,24 +40,24 @@ func newTorrentFromDOM(selection *goquery.Selection, provider Provider) (*Torren
 
 	dataTimestamp, err := strconv.ParseInt(td.Eq(4).AttrOr("data-timestamp", ""), 10, 64)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to parse data-timestamp: %w", err)
 	}
 
 	date := time.Unix(dataTimestamp, 0)
 
 	seeders, err := strconv.ParseInt(td.Eq(5).Text(), 10, 64)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to parse seeders: %w", err)
 	}
 
 	leechers, err := strconv.ParseInt(td.Eq(6).Text(), 10, 64)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to parse leechers: %w", err)
 	}
 
 	completedDownloads, err := strconv.ParseInt(td.Eq(7).Text(), 10, 64)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to parse completed downloads: %w", err)
 	}
 
 	return &Torrent{

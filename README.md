@@ -35,17 +35,20 @@ import (
 
 func main() {
 	c := nyaa.NewClient()
-	torrents, err := c.Search(context.Background(), nyaa.SearchOptions{
+	torrents, pageInfo, err := c.Search(context.Background(), nyaa.SearchOptions{
 		Provider:  nyaa.ProviderNyaa,
 		FilterBy:  nyaa.FilterByNoFilter,
 		Category:  nyaa.CategoryAll,
 		Query:     "Nana Mizuki - NANA CLIP 8 BDMV",
 		SortBy:    nyaa.SortByDate,
 		SortOrder: nyaa.SortOrderDesc,
+		// Page:      nyaa.Page(0),
 	})
 	if err != nil {
 		log.Fatalln(err)
 	}
+	
+	fmt.Printf("pageInfo: %#v\n", pageInfo)
 
 	for _, torrent := range torrents {
 		fmt.Printf("%+v\n", torrent)
