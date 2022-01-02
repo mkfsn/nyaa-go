@@ -50,7 +50,7 @@ func (p Provider) Host() string {
 }
 
 func (p Provider) validate() error {
-	if p >= providerEnd {
+	if p < 0 || p >= providerEnd {
 		return ErrUnknownProvider
 	}
 

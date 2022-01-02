@@ -55,7 +55,7 @@ func (s SortBy) Value() string {
 }
 
 func (s SortBy) validate() error {
-	if s >= sortByEnd {
+	if s < 0 || s >= sortByEnd {
 		return ErrUnknownSortBy
 	}
 
@@ -97,7 +97,7 @@ func (s SortOrder) Value() string {
 }
 
 func (s SortOrder) validate() error {
-	if s >= sortOrderEnd {
+	if s < 0 || s >= sortOrderEnd {
 		return ErrUnknownSortOrder
 	}
 
