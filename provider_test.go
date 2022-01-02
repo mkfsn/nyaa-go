@@ -24,3 +24,12 @@ func TestProvider_Host(t *testing.T) {
 		})
 	}
 }
+
+func ExampleProvider_Host() {
+	fmt.Printf("%s\n", nyaa.ProviderNyaa.Host())
+	fmt.Printf("%s\n", nyaa.ProviderSukebei.Host())
+
+	// Output:
+	// nyaa.si
+	// sukebei.nyaa.si
+}
