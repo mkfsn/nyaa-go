@@ -1,6 +1,7 @@
 package nyaa_test
 
 import (
+	"context"
 	"fmt"
 	"log"
 
@@ -9,7 +10,7 @@ import (
 
 func ExampleClient_Search() {
 	c := nyaa.NewClient()
-	torrents, err := c.Search(nyaa.SearchOptions{
+	torrents, err := c.Search(context.Background(), nyaa.SearchOptions{
 		Provider:  nyaa.ProviderNyaa,
 		FilterBy:  nyaa.FilterByNoFilter,
 		Category:  nyaa.CategoryAll,
