@@ -18,6 +18,7 @@ func TestSortBy_Value(t *testing.T) {
 		{nyaa.SortBySeeders, "seeders"},
 		{nyaa.SortByLeechers, "leechers"},
 		{nyaa.SortBySize, "size"},
+		{nyaa.SortBy(-1), ""},
 	}
 	for _, tt := range tests {
 		name := fmt.Sprintf("SortBy %s", tt.s)
@@ -36,6 +37,7 @@ func TestSortOrder_Value(t *testing.T) {
 	}{
 		{nyaa.SortOrderDesc, "desc"},
 		{nyaa.SortOrderAsc, "asc"},
+		{nyaa.SortOrder(-1), ""},
 	}
 	for _, tt := range tests {
 		name := fmt.Sprintf("SortOrder %s", tt.s)

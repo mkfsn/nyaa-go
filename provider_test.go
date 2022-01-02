@@ -14,6 +14,7 @@ func TestProvider_Host(t *testing.T) {
 	}{
 		{nyaa.ProviderNyaa, "nyaa.si"},
 		{nyaa.ProviderSukebei, "sukebei.nyaa.si"},
+		{nyaa.Provider(-1), ""},
 	}
 	for _, tt := range tests {
 		name := fmt.Sprintf("Provider %s", tt.p)

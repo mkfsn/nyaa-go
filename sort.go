@@ -1,9 +1,5 @@
 package nyaa
 
-import (
-	"errors"
-)
-
 // SortBy represents the way to sort the torrent when searching.
 type SortBy int
 
@@ -35,7 +31,7 @@ func (s SortBy) String() string {
 		return "Size"
 	}
 
-	return ""
+	return unknownEntityName
 }
 
 // Value returns the value of the query parameter in the HTTP request.
@@ -60,7 +56,7 @@ func (s SortBy) Value() string {
 
 func (s SortBy) validate() error {
 	if s >= sortByEnd {
-		return errors.New("invalid SortBy value")
+		return ErrUnknownSortBy
 	}
 
 	return nil
@@ -85,7 +81,7 @@ func (s SortOrder) String() string {
 		return "Asc"
 	}
 
-	return ""
+	return unknownEntityName
 }
 
 // Value returns the value of the query parameter in the HTTP request.
@@ -102,7 +98,7 @@ func (s SortOrder) Value() string {
 
 func (s SortOrder) validate() error {
 	if s >= sortOrderEnd {
-		return errors.New("invalid SortOrder value")
+		return ErrUnknownSortOrder
 	}
 
 	return nil
