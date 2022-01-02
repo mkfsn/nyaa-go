@@ -4,8 +4,10 @@ import (
 	"errors"
 )
 
+// FilterBy represents a way to filter the torrents when searching.
 type FilterBy int
 
+// The current ways for filtering torrents.
 const (
 	FilterByNoFilter FilterBy = iota
 	FilterByNoRemakes
@@ -13,6 +15,7 @@ const (
 	filterByEnd
 )
 
+// String implements fmt.Stringer interface.
 func (f FilterBy) String() string {
 	switch f {
 	case FilterByNoFilter:
@@ -26,6 +29,7 @@ func (f FilterBy) String() string {
 	return ""
 }
 
+// Value returns the value of the query parameter in the HTTP request.
 func (f FilterBy) Value() string {
 	switch f {
 	case FilterByNoFilter:

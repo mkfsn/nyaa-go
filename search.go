@@ -4,6 +4,7 @@ import (
 	"net/url"
 )
 
+// SearchOptions represents the options for searching torrents.
 type SearchOptions struct {
 	Provider  Provider
 	FilterBy  FilterBy
