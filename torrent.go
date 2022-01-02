@@ -8,6 +8,7 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
+// Torrent represents a torrent with information retrieved from Nyaa.
 type Torrent struct {
 	Category           string    `json:"category"`
 	Name               string    `json:"name"`

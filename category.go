@@ -8,6 +8,7 @@ import (
 // The available category varies by different providers.
 type Category int
 
+// The categories for the currently supported providers.
 const (
 	CategoryAll Category = 0x000
 	// Categories between categoryNyaaBegin and categoryNyaaEnd are for ProviderNyaa.
@@ -47,6 +48,7 @@ const (
 	categorySukebeiEnd                           = 0x2FF
 )
 
+// Value returns the value of the query parameter in the HTTP request based on the given Provider.
 func (c Category) Value(p Provider) string {
 	if c == CategoryAll {
 		return "0_0"
@@ -67,6 +69,7 @@ func (c Category) Value(p Provider) string {
 	return ""
 }
 
+// String implements fmt.Stringer interface.
 func (c Category) String() string { //nolint:funlen,gocyclo,cyclop
 	switch c {
 	case CategoryAll:
