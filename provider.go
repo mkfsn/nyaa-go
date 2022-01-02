@@ -1,19 +1,19 @@
 package nyaa
 
 import (
-	"errors"
 	"net/url"
 )
 
 // Provider represents the supported sites of Nyaa.
 type Provider int
 
-// Currently supported providers:
-//  - ProviderNyaa: http://nyaa.si
-//  - ProviderSukebei: http://sukebei.nyaa.si (NSFW)
+// Currently supported providers.
 const (
+	// ProviderNyaa is for http://nyaa.si.
 	ProviderNyaa Provider = iota
+	// ProviderSukebei is for http://sukebei.nyaa.si (NSFW).
 	ProviderSukebei
+	// providerEnd is for border check.
 	providerEnd
 )
 
@@ -26,7 +26,7 @@ func (p Provider) String() string {
 		return "ProviderSukebei"
 	}
 
-	return ""
+	return unknownEntityName
 }
 
 // BaseURL returns the base URL of the provider.
@@ -50,8 +50,8 @@ func (p Provider) Host() string {
 }
 
 func (p Provider) validate() error {
-	if p >= providerEnd {
-		return errors.New("invalid Provider value")
+	if p < 0 || p >= providerEnd {
+		return ErrUnknownProvider
 	}
 
 	return nil

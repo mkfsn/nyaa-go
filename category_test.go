@@ -46,6 +46,11 @@ func TestCategory_Value(t *testing.T) {
 		{nyaa.ProviderSukebei, nyaa.CategorySukebeiRealLife, "2_0"},
 		{nyaa.ProviderSukebei, nyaa.CategorySukebeiRealLifePhotobooksAndPictures, "2_1"},
 		{nyaa.ProviderSukebei, nyaa.CategorySukebeiRealLifeVideos, "2_2"},
+		// Unknown Provider
+		{nyaa.Provider(-1), nyaa.CategoryAll, ""},
+		// Unknown Category
+		{nyaa.ProviderNyaa, nyaa.Category(-1), ""},
+		{nyaa.ProviderSukebei, nyaa.Category(-1), ""},
 	}
 	for _, tt := range tests {
 		name := fmt.Sprintf("Provider %s Category %s", tt.p, tt.c)

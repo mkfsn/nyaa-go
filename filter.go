@@ -1,9 +1,5 @@
 package nyaa
 
-import (
-	"errors"
-)
-
 // FilterBy represents a way to filter the torrents when searching.
 type FilterBy int
 
@@ -26,7 +22,7 @@ func (f FilterBy) String() string {
 		return "TrustedOnly"
 	}
 
-	return ""
+	return unknownEntityName
 }
 
 // Value returns the value of the query parameter in the HTTP request.
@@ -44,8 +40,8 @@ func (f FilterBy) Value() string {
 }
 
 func (f FilterBy) validate() error {
-	if f >= filterByEnd {
-		return errors.New("invalid FilterBy value")
+	if f < 0 || f >= filterByEnd {
+		return ErrUnknownFilterBy
 	}
 
 	return nil
