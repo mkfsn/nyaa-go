@@ -85,20 +85,24 @@ var (
 
 // Value returns the value of the query parameter in the HTTP request based on the given Provider.
 func (c Category) Value(p Provider) string {
-	if c == CategoryAll {
-		return "0_0"
-	}
-
 	switch p {
 	case ProviderNyaa:
-		base := c - categoryNyaaBegin
+		if c == CategoryAll {
+			return "0_0"
+		} else if c > categoryNyaaBegin && c < categoryNyaaEnd {
+			base := c - categoryNyaaBegin
 
-		return fmt.Sprintf("%d_%d", base/16, base%16)
+			return fmt.Sprintf("%d_%d", uint(base/16), uint(base%16))
+		}
 
 	case ProviderSukebei:
-		base := c - categorySukebeiBegin
+		if c == CategoryAll {
+			return "0_0"
+		} else if c > categorySukebeiBegin && c < categorySukebeiEnd {
+			base := c - categorySukebeiBegin
 
-		return fmt.Sprintf("%d_%d", base/16, base%16)
+			return fmt.Sprintf("%d_%d", uint(base/16), uint(base%16))
+		}
 	}
 
 	return ""
@@ -110,25 +114,25 @@ func (c Category) String() string {
 		return name
 	}
 
-	return ""
+	return unknownEntityName
 }
 
 func (c Category) validate(p Provider) error {
-	if c == CategoryAll {
-		return nil
-	}
-
 	switch p {
 	case ProviderNyaa:
-		if c <= categoryNyaaBegin || c >= categoryNyaaEnd {
+		if c == CategoryAll {
+			return nil
+		} else if c <= categoryNyaaBegin || c >= categoryNyaaEnd {
 			return fmt.Errorf("invalid Category value for provider: %s", p)
 		}
 
 	case ProviderSukebei:
-		if c <= categorySukebeiBegin || c >= categorySukebeiEnd {
+		if c == CategoryAll {
+			return nil
+		} else if c <= categorySukebeiBegin || c >= categorySukebeiEnd {
 			return fmt.Errorf("invalid Category value for provider: %s", p)
 		}
 	}
 
-	return nil
+	return ErrUnknownProvider
 }

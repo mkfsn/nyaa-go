@@ -15,6 +15,7 @@ func TestFilterBy_Value(t *testing.T) {
 		{nyaa.FilterByNoFilter, "0"},
 		{nyaa.FilterByNoRemakes, "1"},
 		{nyaa.FilterByTrustedOnly, "2"},
+		{nyaa.FilterBy(-1), ""},
 	}
 	for _, tt := range tests {
 		name := fmt.Sprintf("FilterBy %s", tt.f)

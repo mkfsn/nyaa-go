@@ -1,7 +1,6 @@
 package nyaa
 
 import (
-	"errors"
 	"net/url"
 )
 
@@ -27,7 +26,7 @@ func (p Provider) String() string {
 		return "ProviderSukebei"
 	}
 
-	return ""
+	return unknownEntityName
 }
 
 // BaseURL returns the base URL of the provider.
@@ -52,7 +51,7 @@ func (p Provider) Host() string {
 
 func (p Provider) validate() error {
 	if p >= providerEnd {
-		return errors.New("invalid Provider value")
+		return ErrUnknownProvider
 	}
 
 	return nil
