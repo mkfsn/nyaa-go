@@ -26,6 +26,7 @@ go get github.com/mkfsn/nyaa-go
 package main
 
 import (
+	"context"
 	"fmt"
 	"log"
 
@@ -34,7 +35,7 @@ import (
 
 func main() {
 	c := nyaa.NewClient()
-	torrents, err := c.Search(nyaa.SearchOptions{
+	torrents, err := c.Search(context.Background(), nyaa.SearchOptions{
 		Provider:  nyaa.ProviderNyaa,
 		FilterBy:  nyaa.FilterByNoFilter,
 		Category:  nyaa.CategoryAll,
