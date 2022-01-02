@@ -10,9 +10,9 @@ type Provider int
 
 // Currently supported providers.
 const (
-	// ProviderNyaa is for http://nyaa.si
+	// ProviderNyaa is for http://nyaa.si.
 	ProviderNyaa Provider = iota
-	// ProviderSukebei is for http://sukebei.nyaa.si (NSFW)
+	// ProviderSukebei is for http://sukebei.nyaa.si (NSFW).
 	ProviderSukebei
 	// providerEnd is for border check.
 	providerEnd
