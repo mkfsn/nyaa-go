@@ -10,7 +10,7 @@ import (
 
 func ExampleClient_Search() {
 	c := nyaa.NewClient()
-	torrents, err := c.Search(context.Background(), nyaa.SearchOptions{
+	torrents, _, err := c.Search(context.Background(), nyaa.SearchOptions{
 		Provider:  nyaa.ProviderNyaa,
 		FilterBy:  nyaa.FilterByNoFilter,
 		Category:  nyaa.CategoryAll,
