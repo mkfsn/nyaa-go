@@ -4,6 +4,7 @@ import (
 	"net/url"
 )
 
+// SearchOptions represents the options for searching torrents.
 type SearchOptions struct {
 	Provider  Provider
 	FilterBy  FilterBy
@@ -30,11 +31,7 @@ func (o SearchOptions) validate() error {
 		return err
 	}
 
-	if err := o.SortOrder.validate(); err != nil {
-		return err
-	}
-
-	return nil
+	return o.SortOrder.validate()
 }
 
 func (o SearchOptions) buildURL() *url.URL {

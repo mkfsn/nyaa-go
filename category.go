@@ -8,9 +8,10 @@ import (
 // The available category varies by different providers.
 type Category int
 
+// The categories for the currently supported providers.
 const (
 	CategoryAll Category = 0x000
-	// Categories between categoryNyaaBegin and categoryNyaaEnd are for ProviderNyaa
+	// Categories between categoryNyaaBegin and categoryNyaaEnd are for ProviderNyaa.
 	categoryNyaaBegin                          = 0x100
 	CategoryNyaaAnime                          = 0x110
 	CategoryNyaaAnimeMusicVideo                = 0x111
@@ -33,7 +34,7 @@ const (
 	CategoryNyaaSoftwareApplications           = 0x161
 	CategoryNyaaSoftwareGames                  = 0x162
 	categoryNyaaEnd                            = 0x1FF
-	// Categories between categorySukebeiBegin and categorySukebeiEnd are for ProviderSukebei
+	// Categories between categorySukebeiBegin and categorySukebeiEnd are for ProviderSukebei.
 	categorySukebeiBegin                         = 0x200
 	CategorySukebeiArt                           = 0x210
 	CategorySukebeiArtAnime                      = 0x211
@@ -47,6 +48,42 @@ const (
 	categorySukebeiEnd                           = 0x2FF
 )
 
+var (
+	categoryNames = map[Category]string{
+		CategoryAll:                                  "All",
+		CategoryNyaaAnime:                            "NyaaAnimeAll",
+		CategoryNyaaAnimeMusicVideo:                  "NyaaAnimeMusicVideo",
+		CategoryNyaaAnimeEnglishTranslated:           "NyaaAnimeEnglishTranslated",
+		CategoryNyaaAnimeNonEnglishTranslated:        "NyaaAnimeNonEnglishTranslated",
+		CategoryNyaaAnimeRaw:                         "NyaaAnimeRaw",
+		CategoryNyaaAudio:                            "NyaaAudioAll",
+		CategoryNyaaAudioLossless:                    "NyaaAudioLossless",
+		CategoryNyaaAudioLossy:                       "NyaaAudioLossy",
+		CategoryNyaaLiterature:                       "NyaaLiteratureAll",
+		CategoryNyaaLiteratureEnglishTranslated:      "NyaaLiteratureEnglishTranslated",
+		CategoryNyaaLiteratureNonEnglishTranslated:   "NyaaLiteratureNonEnglishTranslated",
+		CategoryNyaaLiteratureRaw:                    "NyaaLiteratureRaw",
+		CategoryNyaaLiveAction:                       "NyaaLiveActionAll",
+		CategoryNyaaLiveActionEnglishTranslated:      "NyaaLiveActionEnglishTranslated",
+		CategoryNyaaPictures:                         "NyaaPicturesAll",
+		CategoryNyaaPicturesGraphics:                 "NyaaPicturesGraphics",
+		CategoryNyaaPicturesPhotos:                   "NyaaPicturesPhotos",
+		CategoryNyaaSoftware:                         "NyaaSoftwareAll",
+		CategoryNyaaSoftwareApplications:             "NyaaSoftwareApplications",
+		CategoryNyaaSoftwareGames:                    "NyaaSoftwareGames",
+		CategorySukebeiArt:                           "SukebeiArtAll",
+		CategorySukebeiArtAnime:                      "SukebeiArtAnime",
+		CategorySukebeiArtDoujinshi:                  "SukebeiArtDoujinshi",
+		CategorySukebeiArtGames:                      "SukebeiArtGames",
+		CategorySukebeiArtManga:                      "SukebeiArtManga",
+		CategorySukebeiArtPictures:                   "SukebeiArtPictures",
+		CategorySukebeiRealLife:                      "SukebeiRealLifeAll",
+		CategorySukebeiRealLifePhotobooksAndPictures: "SukebeiRealLifePhotobooksAndPictures",
+		CategorySukebeiRealLifeVideos:                "SukebeiRealLifeVideos",
+	}
+)
+
+// Value returns the value of the query parameter in the HTTP request based on the given Provider.
 func (c Category) Value(p Provider) string {
 	if c == CategoryAll {
 		return "0_0"
@@ -55,78 +92,22 @@ func (c Category) Value(p Provider) string {
 	switch p {
 	case ProviderNyaa:
 		base := c - categoryNyaaBegin
+
 		return fmt.Sprintf("%d_%d", base/16, base%16)
 
 	case ProviderSukebei:
 		base := c - categorySukebeiBegin
+
 		return fmt.Sprintf("%d_%d", base/16, base%16)
 	}
 
 	return ""
 }
 
+// String implements fmt.Stringer interface.
 func (c Category) String() string {
-	switch c {
-	case CategoryAll:
-		return "All"
-	case CategoryNyaaAnime:
-		return "NyaaAnimeAll"
-	case CategoryNyaaAnimeMusicVideo:
-		return "NyaaAnimeMusicVideo"
-	case CategoryNyaaAnimeEnglishTranslated:
-		return "NyaaAnimeEnglishTranslated"
-	case CategoryNyaaAnimeNonEnglishTranslated:
-		return "NyaaAnimeNonEnglishTranslated"
-	case CategoryNyaaAnimeRaw:
-		return "NyaaAnimeRaw"
-	case CategoryNyaaAudio:
-		return "NyaaAudioAll"
-	case CategoryNyaaAudioLossless:
-		return "NyaaAudioLossless"
-	case CategoryNyaaAudioLossy:
-		return "NyaaAudioLossy"
-	case CategoryNyaaLiterature:
-		return "NyaaLiteratureAll"
-	case CategoryNyaaLiteratureEnglishTranslated:
-		return "NyaaLiteratureEnglishTranslated"
-	case CategoryNyaaLiteratureNonEnglishTranslated:
-		return "NyaaLiteratureNonEnglishTranslated"
-	case CategoryNyaaLiteratureRaw:
-		return "NyaaLiteratureRaw"
-	case CategoryNyaaLiveAction:
-		return "NyaaLiveActionAll"
-	case CategoryNyaaLiveActionEnglishTranslated:
-		return "NyaaLiveActionEnglishTranslated"
-	case CategoryNyaaPictures:
-		return "NyaaPicturesAll"
-	case CategoryNyaaPicturesGraphics:
-		return "NyaaPicturesGraphics"
-	case CategoryNyaaPicturesPhotos:
-		return "NyaaPicturesPhotos"
-	case CategoryNyaaSoftware:
-		return "NyaaSoftwareAll"
-	case CategoryNyaaSoftwareApplications:
-		return "NyaaSoftwareApplications"
-	case CategoryNyaaSoftwareGames:
-		return "NyaaSoftwareGames"
-	case CategorySukebeiArt:
-		return "SukebeiArtAll"
-	case CategorySukebeiArtAnime:
-		return "SukebeiArtAnime"
-	case CategorySukebeiArtDoujinshi:
-		return "SukebeiArtDoujinshi"
-	case CategorySukebeiArtGames:
-		return "SukebeiArtGames"
-	case CategorySukebeiArtManga:
-		return "SukebeiArtManga"
-	case CategorySukebeiArtPictures:
-		return "SukebeiArtPictures"
-	case CategorySukebeiRealLife:
-		return "SukebeiRealLifeAll"
-	case CategorySukebeiRealLifePhotobooksAndPictures:
-		return "SukebeiRealLifePhotobooksAndPictures"
-	case CategorySukebeiRealLifeVideos:
-		return "CategorySukebeiRealLifeVideos"
+	if name, ok := categoryNames[c]; ok {
+		return name
 	}
 
 	return ""

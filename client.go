@@ -1,17 +1,18 @@
 package nyaa
 
 import (
+	"context"
 	"net/http"
 
 	"github.com/PuerkitoBio/goquery"
 )
 
-// Client represents a Nyaa client
+// Client represents a Nyaa client.
 type Client struct {
 	httpClient *http.Client
 }
 
-// NewClient returns a Nyaa client
+// NewClient returns a Nyaa client.
 func NewClient() *Client {
 	return &Client{
 		httpClient: &http.Client{},
@@ -19,12 +20,17 @@ func NewClient() *Client {
 }
 
 // Search sends a request based on the given SearchOptions and returns the matched torrents information.
-func (c *Client) Search(opts SearchOptions) ([]*Torrent, error) {
+func (c *Client) Search(ctx context.Context, opts SearchOptions) ([]*Torrent, error) {
 	if err := opts.validate(); err != nil {
 		return nil, err
 	}
 
-	resp, err := c.httpClient.Get(opts.buildURL().String())
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, opts.buildURL().String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	resp, err := c.httpClient.Do(req)
 	if err != nil {
 		return nil, err
 	}
