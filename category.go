@@ -12,40 +12,40 @@ type Category int
 const (
 	CategoryAll Category = 0x000
 	// Categories between categoryNyaaBegin and categoryNyaaEnd are for ProviderNyaa.
-	categoryNyaaBegin                          = 0x100
-	CategoryNyaaAnime                          = 0x110
-	CategoryNyaaAnimeMusicVideo                = 0x111
-	CategoryNyaaAnimeEnglishTranslated         = 0x112
-	CategoryNyaaAnimeNonEnglishTranslated      = 0x113
-	CategoryNyaaAnimeRaw                       = 0x114
-	CategoryNyaaAudio                          = 0x120
-	CategoryNyaaAudioLossless                  = 0x121
-	CategoryNyaaAudioLossy                     = 0x122
-	CategoryNyaaLiterature                     = 0x130
-	CategoryNyaaLiteratureEnglishTranslated    = 0x131
-	CategoryNyaaLiteratureNonEnglishTranslated = 0x132
-	CategoryNyaaLiteratureRaw                  = 0x133
-	CategoryNyaaLiveAction                     = 0x140
-	CategoryNyaaLiveActionEnglishTranslated    = 0x141
-	CategoryNyaaPictures                       = 0x150
-	CategoryNyaaPicturesGraphics               = 0x151
-	CategoryNyaaPicturesPhotos                 = 0x152
-	CategoryNyaaSoftware                       = 0x160
-	CategoryNyaaSoftwareApplications           = 0x161
-	CategoryNyaaSoftwareGames                  = 0x162
-	categoryNyaaEnd                            = 0x1FF
+	categoryNyaaBegin                          Category = 0x100
+	CategoryNyaaAnime                          Category = 0x110
+	CategoryNyaaAnimeMusicVideo                Category = 0x111
+	CategoryNyaaAnimeEnglishTranslated         Category = 0x112
+	CategoryNyaaAnimeNonEnglishTranslated      Category = 0x113
+	CategoryNyaaAnimeRaw                       Category = 0x114
+	CategoryNyaaAudio                          Category = 0x120
+	CategoryNyaaAudioLossless                  Category = 0x121
+	CategoryNyaaAudioLossy                     Category = 0x122
+	CategoryNyaaLiterature                     Category = 0x130
+	CategoryNyaaLiteratureEnglishTranslated    Category = 0x131
+	CategoryNyaaLiteratureNonEnglishTranslated Category = 0x132
+	CategoryNyaaLiteratureRaw                  Category = 0x133
+	CategoryNyaaLiveAction                     Category = 0x140
+	CategoryNyaaLiveActionEnglishTranslated    Category = 0x141
+	CategoryNyaaPictures                       Category = 0x150
+	CategoryNyaaPicturesGraphics               Category = 0x151
+	CategoryNyaaPicturesPhotos                 Category = 0x152
+	CategoryNyaaSoftware                       Category = 0x160
+	CategoryNyaaSoftwareApplications           Category = 0x161
+	CategoryNyaaSoftwareGames                  Category = 0x162
+	categoryNyaaEnd                            Category = 0x1FF
 	// Categories between categorySukebeiBegin and categorySukebeiEnd are for ProviderSukebei.
-	categorySukebeiBegin                         = 0x200
-	CategorySukebeiArt                           = 0x210
-	CategorySukebeiArtAnime                      = 0x211
-	CategorySukebeiArtDoujinshi                  = 0x212
-	CategorySukebeiArtGames                      = 0x213
-	CategorySukebeiArtManga                      = 0x214
-	CategorySukebeiArtPictures                   = 0x215
-	CategorySukebeiRealLife                      = 0x220
-	CategorySukebeiRealLifePhotobooksAndPictures = 0x221
-	CategorySukebeiRealLifeVideos                = 0x222
-	categorySukebeiEnd                           = 0x2FF
+	categorySukebeiBegin                         Category = 0x200
+	CategorySukebeiArt                           Category = 0x210
+	CategorySukebeiArtAnime                      Category = 0x211
+	CategorySukebeiArtDoujinshi                  Category = 0x212
+	CategorySukebeiArtGames                      Category = 0x213
+	CategorySukebeiArtManga                      Category = 0x214
+	CategorySukebeiArtPictures                   Category = 0x215
+	CategorySukebeiRealLife                      Category = 0x220
+	CategorySukebeiRealLifePhotobooksAndPictures Category = 0x221
+	CategorySukebeiRealLifeVideos                Category = 0x222
+	categorySukebeiEnd                           Category = 0x2FF
 )
 
 var (
