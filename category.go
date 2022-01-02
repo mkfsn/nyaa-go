@@ -79,7 +79,7 @@ var (
 		CategorySukebeiArtPictures:                   "SukebeiArtPictures",
 		CategorySukebeiRealLife:                      "SukebeiRealLifeAll",
 		CategorySukebeiRealLifePhotobooksAndPictures: "SukebeiRealLifePhotobooksAndPictures",
-		CategorySukebeiRealLifeVideos:                "CategorySukebeiRealLifeVideos",
+		CategorySukebeiRealLifeVideos:                "SukebeiRealLifeVideos",
 	}
 )
 
