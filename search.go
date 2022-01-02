@@ -12,6 +12,7 @@ type SearchOptions struct {
 	Query     string
 	SortBy    SortBy
 	SortOrder SortOrder
+	Page      Page
 }
 
 func (o SearchOptions) validate() error {
@@ -47,9 +48,10 @@ func (o SearchOptions) buildQuery() url.Values {
 
 	values.Set("f", o.FilterBy.Value())           // FilterBy
 	values.Set("c", o.Category.Value(o.Provider)) // Category
-	values.Set("q", o.Query)
-	values.Set("s", o.SortBy.Value())
-	values.Set("o", o.SortOrder.Value())
+	values.Set("q", o.Query)                      // RawQuery
+	values.Set("s", o.SortBy.Value())             // SortBy
+	values.Set("o", o.SortOrder.Value())          // SortOrder
+	values.Set("p", o.Page.Value())               // Page
 
 	return values
 }
