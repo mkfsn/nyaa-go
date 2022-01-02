@@ -48,6 +48,41 @@ const (
 	categorySukebeiEnd                           = 0x2FF
 )
 
+var (
+	categoryNames = map[Category]string{
+		CategoryAll:                                  "All",
+		CategoryNyaaAnime:                            "NyaaAnimeAll",
+		CategoryNyaaAnimeMusicVideo:                  "NyaaAnimeMusicVideo",
+		CategoryNyaaAnimeEnglishTranslated:           "NyaaAnimeEnglishTranslated",
+		CategoryNyaaAnimeNonEnglishTranslated:        "NyaaAnimeNonEnglishTranslated",
+		CategoryNyaaAnimeRaw:                         "NyaaAnimeRaw",
+		CategoryNyaaAudio:                            "NyaaAudioAll",
+		CategoryNyaaAudioLossless:                    "NyaaAudioLossless",
+		CategoryNyaaAudioLossy:                       "NyaaAudioLossy",
+		CategoryNyaaLiterature:                       "NyaaLiteratureAll",
+		CategoryNyaaLiteratureEnglishTranslated:      "NyaaLiteratureEnglishTranslated",
+		CategoryNyaaLiteratureNonEnglishTranslated:   "NyaaLiteratureNonEnglishTranslated",
+		CategoryNyaaLiteratureRaw:                    "NyaaLiteratureRaw",
+		CategoryNyaaLiveAction:                       "NyaaLiveActionAll",
+		CategoryNyaaLiveActionEnglishTranslated:      "NyaaLiveActionEnglishTranslated",
+		CategoryNyaaPictures:                         "NyaaPicturesAll",
+		CategoryNyaaPicturesGraphics:                 "NyaaPicturesGraphics",
+		CategoryNyaaPicturesPhotos:                   "NyaaPicturesPhotos",
+		CategoryNyaaSoftware:                         "NyaaSoftwareAll",
+		CategoryNyaaSoftwareApplications:             "NyaaSoftwareApplications",
+		CategoryNyaaSoftwareGames:                    "NyaaSoftwareGames",
+		CategorySukebeiArt:                           "SukebeiArtAll",
+		CategorySukebeiArtAnime:                      "SukebeiArtAnime",
+		CategorySukebeiArtDoujinshi:                  "SukebeiArtDoujinshi",
+		CategorySukebeiArtGames:                      "SukebeiArtGames",
+		CategorySukebeiArtManga:                      "SukebeiArtManga",
+		CategorySukebeiArtPictures:                   "SukebeiArtPictures",
+		CategorySukebeiRealLife:                      "SukebeiRealLifeAll",
+		CategorySukebeiRealLifePhotobooksAndPictures: "SukebeiRealLifePhotobooksAndPictures",
+		CategorySukebeiRealLifeVideos:                "CategorySukebeiRealLifeVideos",
+	}
+)
+
 // Value returns the value of the query parameter in the HTTP request based on the given Provider.
 func (c Category) Value(p Provider) string {
 	if c == CategoryAll {
@@ -70,68 +105,9 @@ func (c Category) Value(p Provider) string {
 }
 
 // String implements fmt.Stringer interface.
-func (c Category) String() string { //nolint:funlen,gocyclo,cyclop
-	switch c {
-	case CategoryAll:
-		return "All"
-	case CategoryNyaaAnime:
-		return "NyaaAnimeAll"
-	case CategoryNyaaAnimeMusicVideo:
-		return "NyaaAnimeMusicVideo"
-	case CategoryNyaaAnimeEnglishTranslated:
-		return "NyaaAnimeEnglishTranslated"
-	case CategoryNyaaAnimeNonEnglishTranslated:
-		return "NyaaAnimeNonEnglishTranslated"
-	case CategoryNyaaAnimeRaw:
-		return "NyaaAnimeRaw"
-	case CategoryNyaaAudio:
-		return "NyaaAudioAll"
-	case CategoryNyaaAudioLossless:
-		return "NyaaAudioLossless"
-	case CategoryNyaaAudioLossy:
-		return "NyaaAudioLossy"
-	case CategoryNyaaLiterature:
-		return "NyaaLiteratureAll"
-	case CategoryNyaaLiteratureEnglishTranslated:
-		return "NyaaLiteratureEnglishTranslated"
-	case CategoryNyaaLiteratureNonEnglishTranslated:
-		return "NyaaLiteratureNonEnglishTranslated"
-	case CategoryNyaaLiteratureRaw:
-		return "NyaaLiteratureRaw"
-	case CategoryNyaaLiveAction:
-		return "NyaaLiveActionAll"
-	case CategoryNyaaLiveActionEnglishTranslated:
-		return "NyaaLiveActionEnglishTranslated"
-	case CategoryNyaaPictures:
-		return "NyaaPicturesAll"
-	case CategoryNyaaPicturesGraphics:
-		return "NyaaPicturesGraphics"
-	case CategoryNyaaPicturesPhotos:
-		return "NyaaPicturesPhotos"
-	case CategoryNyaaSoftware:
-		return "NyaaSoftwareAll"
-	case CategoryNyaaSoftwareApplications:
-		return "NyaaSoftwareApplications"
-	case CategoryNyaaSoftwareGames:
-		return "NyaaSoftwareGames"
-	case CategorySukebeiArt:
-		return "SukebeiArtAll"
-	case CategorySukebeiArtAnime:
-		return "SukebeiArtAnime"
-	case CategorySukebeiArtDoujinshi:
-		return "SukebeiArtDoujinshi"
-	case CategorySukebeiArtGames:
-		return "SukebeiArtGames"
-	case CategorySukebeiArtManga:
-		return "SukebeiArtManga"
-	case CategorySukebeiArtPictures:
-		return "SukebeiArtPictures"
-	case CategorySukebeiRealLife:
-		return "SukebeiRealLifeAll"
-	case CategorySukebeiRealLifePhotobooksAndPictures:
-		return "SukebeiRealLifePhotobooksAndPictures"
-	case CategorySukebeiRealLifeVideos:
-		return "CategorySukebeiRealLifeVideos"
+func (c Category) String() string {
+	if name, ok := categoryNames[c]; ok {
+		return name
 	}
 
 	return ""
