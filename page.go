@@ -2,6 +2,7 @@ package nyaa
 
 import (
 	"strconv"
+	"strings"
 
 	"github.com/PuerkitoBio/goquery"
 )
@@ -28,7 +29,7 @@ func newPageInfoFromDocument(doc *goquery.Document) (*PageInfo, error) {
 		return &PageInfo{IsSinglePage: true}, nil
 	}
 
-	currentPage, err := strconv.Atoi(pagination.Find("li.active").Text())
+	currentPage, err := strconv.Atoi(strings.TrimSpace(pagination.Find("li.active > a").Children().Remove().End().Text()))
 	if err != nil {
 		return nil, err
 	}

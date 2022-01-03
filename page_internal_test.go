@@ -29,7 +29,9 @@ func Test_newPageInfoFromDocument(t *testing.T) {
 			html := `
 				<ul class="pagination">
 					<li class="previous disabled unavailable"><a> « </a></li>
-					<li class="active"><a>1</a></li>
+					<li class="active">
+						<a href="#">1 <span class="sr-only">(current)</span></a>
+					</li>
 					<li><a href="/?f=0&amp;c=0_0&amp;q=Nana+Mizuki+&amp;p=2">2</a></li>
 					<li><a href="/?f=0&amp;c=0_0&amp;q=Nana+Mizuki+&amp;p=3">3</a></li>
 					<li><a href="/?f=0&amp;c=0_0&amp;q=Nana+Mizuki+&amp;p=4">4</a></li>
